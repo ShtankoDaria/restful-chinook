@@ -15,14 +15,12 @@ const controllers = {
   },
   getOne: (req, res) => {
     const id = req.params.id;
-    const sql = `SELECT * FROM albums WHERE albumid=${Number(id)} `;
-
+    const sql = `SELECT * FROM albums WHERE AlbumId = ${id}`;
     db.all(sql, (err, rows) => {
       if (err) {
         res.status(400).json({ error: err.message });
         return;
       }
-
       res.json(rows);
     });
   },
